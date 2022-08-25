@@ -20,15 +20,33 @@ var ball = {
     dx:3,
     dy:3
 }
-
+rightwristy = 0;
+rightwristx = 0;
+scorerightwrist = 0;
+game_status = "";
 function setup(){
   var canvas =  createCanvas(700,600);
+  canvas.parent('canvas');
+  video = createCapture(VIDEO);
+  video.size(700,600);
+  video.hide();
+  posenet = ml5.poseNet(video,modalLoded);
+  posenet.on('pose',gotposes);
 }
 
+function modalLoded(){
+  console.log("posenet is initialized");
+
+}
+
+function gotposes(){
+  
+}
 
 function draw(){
 
- background(0); 
+ background(0);
+ image(video,0,0,700,600); 
 
  fill("black");
  stroke("black");
